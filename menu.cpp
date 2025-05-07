@@ -2,6 +2,11 @@
 #include <conio.h>
 using namespace std;
 
+void info(){
+  system("cls");
+  cout<<"Indonesia Hebat, Poliban Juara";
+getch();  
+}
 
 void dMenu(){
 system("cls");
@@ -43,6 +48,7 @@ do
     /* code */
     break;  
    case '4':
+   info();
     mPertama("ke- empat");
     /* code */
     break;  
