@@ -3,7 +3,7 @@
 using namespace std;
 
 const int MAX = 100;
-int data[MAX];
+int arrayData[100];
 int jumlah = 0;
 
 void info(){
@@ -37,7 +37,7 @@ void inputArray(){
 
     for (int i = 0; i < jumlah; i++) {
         cout << "Masukkan data ke-" << i + 1 << ": ";
-        cin >> data[i];
+        cin >> arrayData[i];
     }
     cout << "Data berhasil disimpan!";
     getch();
@@ -50,7 +50,7 @@ void tampilArray() {
   } else {
       cout << "Isi Array:\n";
       for (int i = 0; i < jumlah; i++) {
-          cout << data[i] << " ";
+          cout << arrayData[i] << " ";
       }
   }
   getch();
@@ -63,10 +63,10 @@ void sortArray() {
       // Bubble Sort
       for (int i = 0; i < jumlah - 1; i++) {
           for (int j = 0; j < jumlah - i - 1; j++) {
-              if (data[j] > data[j + 1]) {
-                  int temp = data[j];
-                  data[j] = data[j + 1];
-                  data[j + 1] = temp;
+              if (arrayData[j] > arrayData[j + 1]) {
+                  int temp = arrayData[j];
+                  arrayData [j] = arrayData[j + 1];
+                  arrayData [j + 1] = temp;
               }
           }
       }
