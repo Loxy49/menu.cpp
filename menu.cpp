@@ -19,8 +19,7 @@ void dMenu(){
   cout<<"2. Menampilkan Array"<<"\n";            
   cout<<"3. Menyortir Array"<<"\n";           
   cout<<"4. info"<<"\n";            
-  cout<<"5. Exit"<<"\n";  
-  cout<<"===================="<<"\n" ;          
+  cout<<"5. Exit"<<"\n";           
   cout<<"Masukan angka :";        
 }
 
@@ -55,22 +54,41 @@ void tampilArray() {
   }
   getch();
 }
+
 void sortArray() {
   system("cls");
   if (jumlah == 0) {
       cout << "Array masih kosong!";
-  } else {
-      // Bubble Sort
-      for (int i = 0; i < jumlah - 1; i++) {
-          for (int j = 0; j < jumlah - i - 1; j++) {
-              if (arrayData[j] > arrayData[j + 1]) {
-                  int temp = arrayData[j];
-                  arrayData [j] = arrayData[j + 1];
-                  arrayData [j + 1] = temp;
-              }
+      getch();
+      return;
+  }
+
+  char pilihan;
+  cout << "Ingin mengurutkan array:\n";
+  cout << "A. Dari terkecil ke terbesar (Ascending)\n";
+  cout << "D. Dari terbesar ke terkecil (Descending)\n";
+  cout << "Masukkan pilihan (A/D): ";
+  cin >> pilihan;
+
+  // Bubble Sort
+  for (int i = 0; i < jumlah - 1; i++) {
+      for (int j = 0; j < jumlah - i - 1; j++) {
+          bool kondisi = false;
+          if (pilihan == 'A' || pilihan == 'a') {
+              kondisi = arrayData[j] > arrayData[j + 1];
+          } else if (pilihan == 'D' || pilihan == 'd') {
+              kondisi = arrayData[j] < arrayData[j + 1];
+          }
+
+          if (kondisi) {
+              swap(arrayData[j], arrayData[j + 1]);
           }
       }
-      cout << "Array berhasil diurutkan!";
+  }
+
+  cout << "\nArray setelah diurutkan:\n";
+  for (int i = 0; i < jumlah; i++) {
+      cout << arrayData[i] << " ";
   }
   getch();
 }
@@ -92,22 +110,18 @@ do
   {
    case '1':
    inputArray();
-   mPertama("ke- satu");
    /* code */
     break;
    case '2':
    tampilArray();
-    mPertama("ke- dua");
     /* code */ 
     break;  
    case '3':
    sortArray();
-    mPertama("ke- tiga");
     /* code */
     break;  
    case '4':
    info();
-    mPertama("ke- empat");
     /* code */
     break;  
   case '5':
