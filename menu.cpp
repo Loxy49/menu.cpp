@@ -56,41 +56,49 @@ void tampilArray() {
 }
 
 void sortArray() {
-  system("cls");
-  if (jumlah == 0) {
-      cout << "Array masih kosong!";
-      getch();
-      return;
-  }
+    system("cls");
+    if (jumlah == 0) {
+        cout << "Array masih kosong!";
+        getch();
+        return;
+    }
 
-  char pilihan;
-  cout << "Ingin mengurutkan array:\n";
-  cout << "A. Dari terkecil ke terbesar (Ascending)\n";
-  cout << "D. Dari terbesar ke terkecil (Descending)\n";
-  cout << "Masukkan pilihan (A/D): ";
-  cin >> pilihan;
+    char pilihan;
+    cout << "Ingin mengurutkan array:\n";
+    cout << "A. Dari terkecil ke terbesar (Ascending)\n";
+    cout << "D. Dari terbesar ke terkecil (Descending)\n";
+    cout << "Masukkan pilihan (A/D): ";
+    cin >> pilihan;
 
-  // Bubble Sort
-  for (int i = 0; i < jumlah - 1; i++) {
-      for (int j = 0; j < jumlah - i - 1; j++) {
-          bool kondisi = false;
-          if (pilihan == 'A' || pilihan == 'a') {
-              kondisi = arrayData[j] > arrayData[j + 1];
-          } else if (pilihan == 'D' || pilihan == 'd') {
-              kondisi = arrayData[j] < arrayData[j + 1];
-          }
+    if (pilihan == 'A' || pilihan == 'a') {
+        // Bubble Sort Ascending (Versi 1)
+        for (int i = 1; i < jumlah; i++) {
+            for (int j = jumlah - 1; j >= i; j--) {
+                if (arrayData[j] < arrayData[j - 1]) {
+                    tukar(&arrayData[j], &arrayData[j - 1]);
+                }
+            }
+        }
+    } else if (pilihan == 'D' || pilihan == 'd') {
+        // Bubble Sort Descending (Versi 2)
+        for (int i = 1; i < jumlah; i++) {
+            for (int j = 0; j < jumlah - i; j++) {
+                if (arrayData[j] < arrayData[j + 1]) {
+                    tukar(&arrayData[j], &arrayData[j + 1]);
+                }
+            }
+        }
+    } else {
+        cout << "Pilihan tidak valid!";
+        getch();
+        return;
+    }
 
-          if (kondisi) {
-              swap(arrayData[j], arrayData[j + 1]);
-          }
-      }
-  }
-
-  cout << "\nArray setelah diurutkan:\n";
-  for (int i = 0; i < jumlah; i++) {
-      cout << arrayData[i] << " ";
-  }
-  getch();
+    cout << "\nArray setelah diurutkan:\n";
+    for (int i = 0; i < jumlah; i++) {
+        cout << arrayData[i] << " ";
+    }
+    getch();
 }
 
 void mPertama(string pesan){
@@ -98,7 +106,6 @@ void mPertama(string pesan){
   cout<<"hallo saya menu "<<pesan;
 getch();
 }
-
 
 int main() {
 char pl;
